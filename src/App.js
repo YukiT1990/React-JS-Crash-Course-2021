@@ -36,12 +36,6 @@ const App = () => {
   }
 
   // Add Task
-  // const addTask = (task) => {
-  //   // console.log('task', task);
-  //   const id = Math.floor(Math.random() * 10000) + 1
-  //   const newTask = { id, ...task }
-  //   setTasks([...tasks, newTask])
-  // }
   const addTask = async (task) => {
     const res = await fetch('http://localhost:5000/tasks', {
       method: 'POST',
@@ -59,10 +53,6 @@ const App = () => {
 
 
   // Delete Task
-  // const deleteTask = (id) => {
-  //   // console.log('delete', id);
-  //   setTasks(tasks.filter((task) => task.id !== id))
-  // }
   const deleteTask = async (id) => {
     await fetch(`http://localhost:5000/tasks/${id}`, {
       method: 'DELETE'
@@ -71,10 +61,6 @@ const App = () => {
   }
 
   // Toggle Reminder
-  // const toggleReminder = (id) => {
-  //   // console.log('reminder', id);
-  //   setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task))
-  // }
   const toggleReminder = async (id) => {
     const taskToToggle = await fetchTask(id)
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
